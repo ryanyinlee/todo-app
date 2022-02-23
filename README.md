@@ -9,3 +9,7 @@ Methods via class components can only consume context once.
 **Describe the operation of the hook: useForm()**
 
 useForm is used to handle the form entry, and submission
+
+## Credits
+
+eriksavage for overall structure

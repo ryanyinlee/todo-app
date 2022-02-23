@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/form.js';
-import { Card, Elevation, Button } from '@blueprintjs/core';
+import ToDoForm from '../form/todoform'
+import List from '../list/list'
+import './todo.scss';
 
 import { v4 as uuid } from 'uuid';
 
@@ -10,12 +12,6 @@ const ToDo = () => {
   const [incomplete, setIncomplete] = useState([]);
   const { handleChange, handleSubmit } = useForm(addItem);
   
-  function showComplete() {
-        let returnString = ''
-        item.complete ? returnString = 'COMPLETE' : 'INCOMPLETE';
-        return returnString
-  }
-
   function addItem(item) {
     console.log(item);
     item.id = uuid();
@@ -49,48 +45,17 @@ const ToDo = () => {
 
   return (
     <>
-      <header>
-        <h1>To Do List: {incomplete} items pending</h1>
-      </header>
+      <h2>{incomplete} items pending</h2> 
+      <ToDoForm 
+      onSubmit={handleSubmit}
+      handleChange={handleChange}
+      />
 
-      <form onSubmit={handleSubmit}>
-
-        <h2>Add To Do Item</h2>
-
-        <label>
-          <span>To Do Item</span>
-          <input onChange={handleChange} name="text" type="text" placeholder="Item Details" />
-        </label>
-
-        <label>
-          <span>Assigned To</span>
-          <input onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
-        </label>
-
-        <label>
-          <span>Difficulty</span>
-          <input onChange={handleChange} defaultValue={3} type="range" min={1} max={5} name="difficulty" />
-        </label>
-
-        <label>
-          <Button type="submit">Add Item</Button >
-        </label>
-      </form>
-      
-      {list.map(item => (
-        
-        <div key={item.id}>
-            <Card interactive={true} elevation={Elevation.TWO}>
-          <p>{item.text}</p>
-          <p><small>Assigned to: {item.assignee}</small></p>
-          <p><small>Difficulty: {item.difficulty}</small></p>
-          <Button onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()}</Button>
-          <Button onClick={() => deleteItem(item.id)}>DELETE</Button>
-          <hr />
-          </Card>
-        </div>
-        
-      ))}
+      <List       
+      list={list}
+      deleteItem={deleteItem} 
+      toggleComplete={toggleComplete} 
+      />
      
 
     </>
