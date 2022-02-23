@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/form.js';
+import { Card, Elevation, Button } from '@blueprintjs/core';
 
 import { v4 as uuid } from 'uuid';
 
@@ -8,6 +9,12 @@ const ToDo = () => {
   const [list, setList] = useState([]);
   const [incomplete, setIncomplete] = useState([]);
   const { handleChange, handleSubmit } = useForm(addItem);
+  
+  function showComplete() {
+        let returnString = ''
+        item.complete ? returnString = 'COMPLETE' : 'INCOMPLETE';
+        return returnString
+  }
 
   function addItem(item) {
     console.log(item);
@@ -66,19 +73,25 @@ const ToDo = () => {
         </label>
 
         <label>
-          <button type="submit">Add Item</button>
+          <Button type="submit">Add Item</Button >
         </label>
       </form>
-
+      
       {list.map(item => (
+        
         <div key={item.id}>
+            <Card interactive={true} elevation={Elevation.TWO}>
           <p>{item.text}</p>
           <p><small>Assigned to: {item.assignee}</small></p>
           <p><small>Difficulty: {item.difficulty}</small></p>
-          <div onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()}</div>
+          <Button onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()}</Button>
+          <Button onClick={() => deleteItem(item.id)}>DELETE</Button>
           <hr />
+          </Card>
         </div>
+        
       ))}
+     
 
     </>
   );
