@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from './components/header/header';
-import ToDo from './components/todo/todo.js';
+import ToDo from './components/todo/Main.js';
 import Theme from './context/settingscontext'
 import Footer from './components/footer/footer';
 
