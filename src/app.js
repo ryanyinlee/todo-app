@@ -9,25 +9,25 @@ import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 
 
-import Auth from './components/auth/auth.js';
-import Login from './components/auth/login.js';
-import LoginContext from './components/auth/context.js';
+
+import Login from './components/auth/Login.js';
+import AuthContext from './components/auth/Context.js';
 
 
 function App () {
 
 return (
     <>
-    <LoginContext>
+    <AuthContext>
         <Login/>
     <Theme>
     
-    <Auth>
+    
     <Main />    
-    </Auth>
+    
 
     </Theme>
-    </LoginContext>
+    </AuthContext>
     </>
 )
 }

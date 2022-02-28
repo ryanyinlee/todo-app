@@ -7,7 +7,7 @@ import ToDoForm from './ToDoForm'
 import List from './List'
 import Footer from './Footer';
 
-// import './main.scss';
+import Auth from './auth/Auth.js';
 
 import { v4 as uuid } from 'uuid';
 
@@ -50,8 +50,10 @@ const Main = () => {
 
   return (
     <>
+
+     
+      <Auth capability="create">
       <Header incomplete ={incomplete}/>
-      
       <ToDoForm 
       onSubmit={handleSubmit}
       handleChange={handleChange}
@@ -62,8 +64,9 @@ const Main = () => {
       deleteItem={deleteItem} 
       toggleComplete={toggleComplete} 
       />
+      <Footer/>
+      </Auth>
      
-     <Footer/>
     </>
   );
 };

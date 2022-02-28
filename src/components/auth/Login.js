@@ -2,10 +2,10 @@
 import React from 'react';
 import {When} from 'react-if';
 
-import { LoginContext } from './context.js';
+import { AuthContext } from './Context.js';
 
 class Login extends React.Component {
-  static contextType = LoginContext;
+  static contextType = AuthContext;
 
   constructor(props) {
     super(props);
