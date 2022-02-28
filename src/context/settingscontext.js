@@ -1,29 +1,30 @@
-import React from 'react';
+'use strict';
+import { createContext, useState } from 'react';
 
-export const DisplayContext = React.createContext(); //show and hide
+export const DisplayContext = createContext({});
 
-class Display extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state ={
-            setting: 'show',
-            itemsShown: 3,
-            defaultSortField: ''
-        };
-    }
-    render() {
-        return(
-            <DisplayContext.Provider value={this.state}>
-                {this.props.children}
-            </DisplayContext.Provider>
+export default function DisplaySettings(props) {
+    const [toDosShowing, setToDosShowing] = useState(3);
+    const [showComplete, setShowComplete] = useState(true);
 
-        );
+    const toggleShowComplete = () => {
+        setShowComplete(showComplete ? false : true);
     }
 
-}
+    const exportedValues = {
+        toDosShowing,
+        showComplete,
+        toggleShowComplete,
+        changeTodosShown: setToDosShowing
+    };
 
-export default Display;
-// Display or Hide completed items (boolean).
-// Number of items to display per screen (number).
-// Default sort field (string).
-// Manually set (hard code) those state settings in the context provider’s state, they should not be changeable.
+
+    return (
+        <DisplayContext.Provider value={exportedValues}>
+        {props.children}
+        </DisplayContext.Provider>
+
+    );
+
+
+};

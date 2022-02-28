@@ -1,9 +1,8 @@
-
+'use strict';
 import React from 'react';
 import { Card, Button, Elevation } from '@blueprintjs/core';
-import './form.scss';
 
-function ToDoForm (props) {
+export default function ToDoForm (props) {
     
 
     return (
@@ -36,7 +35,3 @@ function ToDoForm (props) {
         </>
     )
 }
-
-
-
-export default ToDoForm;

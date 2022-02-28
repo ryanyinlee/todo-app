@@ -13,3 +13,5 @@ useForm is used to handle the form entry, and submission
 ## Credits
 
 eriksavage for overall structure
+
+code review from class 32 for pagination

@@ -1,12 +1,17 @@
+'use strict';
 import React, { useEffect, useState } from 'react';
-import useForm from '../../hooks/form.js';
-import ToDoForm from '../form/todoform'
-import List from '../list/list'
-import './main.scss';
+import useForm from '../hooks/form.js';
+
+import Header from './Header';
+import ToDoForm from './ToDoForm'
+import List from './List'
+import Footer from './Footer';
+
+// import './main.scss';
 
 import { v4 as uuid } from 'uuid';
 
-const ToDo = () => {
+const Main = () => {
 
   const [list, setList] = useState([]);
   const [incomplete, setIncomplete] = useState([]);
@@ -45,7 +50,8 @@ const ToDo = () => {
 
   return (
     <>
-      <h2>{incomplete} items pending</h2> 
+      <Header incomplete ={incomplete}/>
+      
       <ToDoForm 
       onSubmit={handleSubmit}
       handleChange={handleChange}
@@ -57,9 +63,9 @@ const ToDo = () => {
       toggleComplete={toggleComplete} 
       />
      
-
+     <Footer/>
     </>
   );
 };
 
-export default ToDo;
+export default Main;
