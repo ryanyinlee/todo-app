@@ -1,11 +1,11 @@
+'use strict';
 
 import React from 'react';
-import './footer.scss';
-function Footer () {    
+
+export default function Footer () {    
     return (
         <>
         Do these things!
         </>
     )
 }
-export default Footer;
